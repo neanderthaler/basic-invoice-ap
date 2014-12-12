@@ -1,0 +1,46 @@
+FORMAT: 1A
+
+# basic-invoice
+Tinksoft's basic-invoice API is a *simple Invoicing API* service.
+
+# Group Notes
+Invoice related resources of the **Basic Invoice API**
+
+## Invoices Collection [/invoices]
+### List all Invoices [GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "incoiceId": "MyCompany/INV/001", "customerName": "ElectricStore", "invoiceItem": "App: learn to play the guitar in one-two-three"
+        }, {
+          "id": 2, "incoiceId": "MyCompany/INV/002", "customerName": "TheWaterCompany", "invoiceItem": "App: manage my water resources"
+        }]
+
+### Create an Invoice [POST]
++ Request (application/json)
+
+        { "customerName": "ElectricStore", "invoiceItem": "App: learn to play the piano in one-two-three" }
+
++ Response 201 (application/json)
+
+        { "id": 3, "invoiceId": "MyCompany/INV/003", "customerName": "ElectricalStore", "invoiceItem": "App: learn to play the piano in one-two-three" }
+
+## Invoice [/invoices/{id}]
+A single Invoice object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Invoice to perform action with. Has example value.
+
+### Retrieve a Invoice [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 3, "invoiceId": "MyCompany/INV/003", "customerName": "ElectricalStore", "invoiceItem": "App: learn to play the piano in one-two-three" }
+
+### Remove a Note [DELETE]
++ Response 204
